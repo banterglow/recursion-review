@@ -5,23 +5,40 @@
 
 var stringifyJSON = function(obj) {
   
-  //string
+  //  string
   if (_.isString(obj)) {
-    return '\"' + obj + '\"';    
+    return '\"' + obj + '\"';  
+  
+  // number, booleans, undefined, null, function
   } else if (_.isNumber(obj) || _.isBoolean(obj) || _.isUndefined(obj) || _.isNull(obj) || _.isFunction(obj)) {
     return "" + obj;
+  
+  // array
   } else if (_.isArray(obj)) {
     var stringifiedArray = [];
-    // for (var i = 0; i < obj.length; i++) {
-    //   stringifiedArray.push(stringifyJSON(obj[i]));
-    // }
-    if (_.isEmpty(obj)) {
-      return '[]';
+    for (var i = 0; i < obj.length; i++) {
+      stringifiedArray.push(stringifyJSON(obj[i]));
     }
-    return stringifiedArray;
+    return '[' + stringifiedArray + ']';
+
+  // object
   } else if (_.isObject(obj)) {
-    return _.object(stringifyJSON(Object.keys(obj)),stringifyJSON(Object.values(obj)));
+    var objString = "";
+    if (Object.keys(obj)[0] !== undefined) {
+      for (var key in obj){
+        curKey = key;
+        curObj = obj[key];
+        objString += stringifyJSON(curKey) + ":" + stringifyJSON(curObj); 
+      }
+      return '{' + objString + '}';
+    }
+    return '{}';
+
+    // keysArray = Object.keys(obj);
+    // valuesArray = Object.keys(obj);
+    // if (keysArray[0] !== undefined) {
+    //   return _.object(stringifyJSON(keysArray), stringifyJSON(valuesArray));
+    // }
+    // return '{}';
   }
-  //array => recurse
-  //object => recurse
 };

@@ -9,6 +9,7 @@ var getElementsByClassName = function(className
 
   var resultArray = [];
 
+//helper function to check each element individually
   var checkElement = function(element) {
     if(element.classList !== undefined && element.classList.contains(className)) {
       resultArray.push(element);      
@@ -21,20 +22,8 @@ var getElementsByClassName = function(className
     }
   };
   
+// invoke the helper function
   checkElement(document.body);
-
-  // for (let i = 0; i < elementArray.length; i++) {
-  //   if (elementArray[i].classList.contains(className)) {
-  //     resultArray.push(elementArray[i]);
-  //   }
-
-  //   if (elementArray[i].children) {
-  //     var childrenArray = elementArray[i].children;
-  //     for (let j = 0; j < childrenArray.length; j++) {
-  //       resultArray = resultArray.concat(childrenArray[j].getElementsByClassName(className));      
-  //     }
-  //   }
-  // }
 
   return resultArray;
 };
