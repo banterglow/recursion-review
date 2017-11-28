@@ -3,5 +3,8 @@
 
 // but you're not, so you'll write it from scratch:
 var parseJSON = function(json) {
-  return json.slice(1,json.length-1);
+  // return json.slice(1,json.length-1);
+  if (json[0] === '[') {
+    return [];
+  }
 };
