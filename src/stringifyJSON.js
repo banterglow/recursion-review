@@ -3,6 +3,8 @@
 
 // but you don't so you're going to write it from scratch:
 
+
+
 var stringifyJSON = function(obj) {
   
   //  string
@@ -37,7 +39,7 @@ var stringifyJSON = function(obj) {
         // creats a list of key:value pairs with a comma at the end
       }
     }
-    objString = objString.slice(0,objString.length-1);
+    objString = objString.slice(0, objString.length-1);
     // removes the final comma
     return '{' + objString + '}';
   }
