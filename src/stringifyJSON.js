@@ -39,12 +39,5 @@ var stringifyJSON = function(obj) {
       return '{' + objString + '}';
     }
     return '{}';
-
-    // keysArray = Object.keys(obj);
-    // valuesArray = Object.keys(obj);
-    // if (keysArray[0] !== undefined) {
-    //   return _.object(stringifyJSON(keysArray), stringifyJSON(valuesArray));
-    // }
-    // return '{}';
   }
 };

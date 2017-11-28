@@ -27,7 +27,3 @@ var getElementsByClassName = function(className
 
   return resultArray;
 };
-
-// string
-// use value to check if matches given string
-// add to central array
