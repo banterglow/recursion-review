@@ -3,8 +3,6 @@
 
 // but you don't so you're going to write it from scratch:
 
-
-
 var stringifyJSON = function(obj) {
   
   //  string
@@ -16,7 +14,7 @@ var stringifyJSON = function(obj) {
   
   // number, booleans, undefined, null, function
   } else if (_.isNumber(obj) || _.isBoolean(obj) || _.isNull(obj)) {
-    return "" + obj;
+    return '' + obj;
   
   // array
   } else if (_.isArray(obj)) {
@@ -28,18 +26,18 @@ var stringifyJSON = function(obj) {
 
   // object
   } else if (_.isObject(obj)) {
-    var objString = "";
+    var objString = '';
 
-    for (var key in obj){
+    for (var key in obj) {
       var curKey = key;
       var curObj = obj[key];
 
       if (!_.isFunction(curObj) && !_.isUndefined(curObj)) {
-        objString += stringifyJSON(curKey) + ":" + stringifyJSON(curObj) + ',';
+        objString += stringifyJSON(curKey) + ':' + stringifyJSON(curObj) + ',';
         // creats a list of key:value pairs with a comma at the end
       }
     }
-    objString = objString.slice(0, objString.length-1);
+    objString = objString.slice(0, objString.length - 1);
     // removes the final comma
     return '{' + objString + '}';
   }
