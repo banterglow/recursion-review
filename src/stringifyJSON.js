@@ -8,6 +8,7 @@ var stringifyJSON = function(obj) {
   //  string
   if (_.isFunction(obj) || _.isUndefined(obj)) {
     return;
+
   } else if (_.isString(obj)) {
     return '\"' + obj + '\"';  
   
@@ -26,18 +27,18 @@ var stringifyJSON = function(obj) {
   // object
   } else if (_.isObject(obj)) {
     var objString = "";
-    if (Object.keys(obj)[0] !== undefined) {
-      for (var key in obj){
-        curKey = key;
-        curObj = obj[key];
-        if (_.isFunction(curObj) || _.isUndefined(curObj)) {
-          continue;
-        }
+
+    for (var key in obj){
+      var curKey = key;
+      var curObj = obj[key];
+
+      if (!_.isFunction(curObj) && !_.isUndefined(curObj)) {
         objString += stringifyJSON(curKey) + ":" + stringifyJSON(curObj) + ',';
+        // creats a list of key:value pairs with a comma at the end
       }
-      objString = objString.slice(0,objString.length-1);
-      return '{' + objString + '}';
     }
-    return '{}';
+    objString = objString.slice(0,objString.length-1);
+    // removes the final comma
+    return '{' + objString + '}';
   }
 };
